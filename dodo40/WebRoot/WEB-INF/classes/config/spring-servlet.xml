@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"  
+ xmlns:context="http://www.springframework.org/schema/context"  
+ xmlns:p="http://www.springframework.org/schema/p"  
+ xmlns:aop="http://www.springframework.org/schema/aop"
+ xmlns:mvc="http://www.springframework.org/schema/mvc"  
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+ xmlns:task="http://www.springframework.org/schema/task" 
+ xsi:schemaLocation="http://www.springframework.org/schema/beans  
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+      http://www.springframework.org/schema/context  
+      http://www.springframework.org/schema/context/spring-context.xsd 
+      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd 
+      http://www.springframework.org/schema/mvc  
+      http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+      http://www.springframework.org/schema/task  
+	  http://www.springframework.org/schema/task/spring-task-3.0.xsd  ">
+
+	<aop:aspectj-autoproxy />
+	  
+	<!-- 注解扫描包 -->
+	<context:component-scan base-package="com.embraiz"/> 
+	
+	
+	
+	<!-- 把后缀名名为jsp的全部转为字符串 -->  <!-- 待确定 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix">
+			<value>/master</value>
+		</property>
+		<property name="suffix">
+			<value>.jsp</value>
+		</property>
+	</bean> 
+	
+	
+	<!-- 启用spring mvc 注解 -->
+	<context:annotation-config /> 
+	<mvc:annotation-driven/>
+	
+	<!-- 统一异常处理 -->
+     <bean id="exceptionResolver" class="com.embraiz.exception.ExceptionHandler"/>
+	
+	<!-- 文件上传 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+      	<property name="defaultEncoding" value="UTF-8"></property>
+      	<property name="maxUploadSize" value="20480000"></property>
+      	<property name="resolveLazily" value="true"/> 
+    </bean>
+    <!-- 文件上传 -->
+	
+	<!-- 处理静态资源访问，会添加默认的servlet，可以省略 --> <!-- 待确定 -->
+	<mvc:default-servlet-handler/>
+	
+</beans>

@@ -1,0 +1,95 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+p{
+	font-size: 20px;
+}
+
+p.underline{
+	text-decoration: underline;
+	font-size: 25px;
+	}
+
+.box1 {
+	width: 800px;
+	height: 1000px;
+}
+
+.box2 {
+	margin-left: 40px;
+	width: 600px;
+	height: 420px;
+}
+.box3 {
+	margin-left: 40px;
+	width: 600px;
+	height: 200px;
+}
+
+.table {
+	width: 600px;
+}
+
+.table_tr_td1 {
+	width: 240px;
+	height: 35px;
+	background-color: gainsboro;
+	text-align: center;
+}
+
+.table_tr_td2 {
+	width: 260px;
+	height: 35px;
+	text-align: center;
+}
+
+@page {
+
+    @bottom-left {
+        content: element(footer);
+        vertical-align: top;
+        padding-top: 10px;
+    }
+
+    @top-right {
+        content: element(header);
+        vertical-align: bottom;
+        padding-bottom: 10px;
+    }
+
+    margin-top: 1cm;
+    margin-left: 2cm;
+    margin-right: 2cm;
+    margin-bottom: 3.3cm;
+
+    size: A4 portrait;
+}
+
+
+div.footer {
+	display: block;
+	margin-top: 0.5cm;
+	position: running(footer);
+}
+
+
+.page-break {
+	page-break-after: always;
+}
+
+.next-page {
+	page-break-before: always
+}
+
+.page-count {
+	text-align: right;
+}
+
+#pagenumber:before {
+    content: counter(page);
+}
+
+#pagecount:before {
+    content: counter(pages);
+} 
